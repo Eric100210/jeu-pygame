@@ -22,6 +22,12 @@ while running:
     #appliquer l'image du joueur
     screen.blit(jeu.joueur.image, jeu.joueur.rect)
 
+    for sort in jeu.joueur.groupe_sortileges:
+        sort.move()
+    
+    #appliquer l'ensemble des images du groupe de sortilèges
+    jeu.joueur.groupe_sortileges.draw(screen)
+
     if jeu.pressed.get(pg.K_RIGHT) and jeu.joueur.rect.x + jeu.joueur.rect.width < screen.get_width():
         jeu.joueur.move_right()
     elif jeu.pressed.get(pg.K_LEFT) and jeu.joueur.rect.x > 0:
@@ -42,6 +48,9 @@ while running:
             pg.quit()
         elif event.type == pg.KEYDOWN:
             jeu.pressed[event.key] = True
+            if event.key == pg.K_SPACE:
+                jeu.joueur.launch_spell()
+
         elif event.type == pg.KEYUP:
             jeu.pressed[event.key] = False
     
