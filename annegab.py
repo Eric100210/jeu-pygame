@@ -24,9 +24,15 @@ while running:
 
     for sort in jeu.joueur.groupe_sortileges:
         sort.move()
+
+    for detraqueur in jeu.groupe_detraqueurs:
+        detraqueur.move()
     
     #appliquer l'ensemble des images du groupe de sortilèges
     jeu.joueur.groupe_sortileges.draw(screen)
+
+    #appliquer l'ensemble des images du groupe détraqueurs
+    jeu.groupe_detraqueurs.draw(screen)
 
     if jeu.pressed.get(pg.K_RIGHT) and jeu.joueur.rect.x + jeu.joueur.rect.width < screen.get_width():
         jeu.joueur.move_right()
