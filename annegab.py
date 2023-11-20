@@ -37,8 +37,6 @@ while running:
     elif jeu.pressed.get(pg.K_DOWN) and jeu.joueur.rect.y + jeu.joueur.rect.height < screen.get_height():
         jeu.joueur.move_down()
 
-    print(jeu.joueur.rect.x)
-
     pg.display.flip() #on met à jour
 
     #si le joueur veut quitter le jeu
