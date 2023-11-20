@@ -15,6 +15,14 @@ class Detraqueur(pg.sprite.Sprite):
         self.rect.x=900
         self.rect.y=300
 
+    def update_health_bar(self, surface):
+        couleur=(255,0,0) #barre de vie rouge pour les ennemis
+        couleur_arriere_barre = (60,63,60)
+        position=[self.rect.x + 38,self.rect.y - 20,self.vie,5]
+        position_arriere=[self.rect.x+38, self.rect.y -20, self.vie_max, 5]
+        pg.draw.rect(surface, couleur_arriere_barre, position_arriere)
+        pg.draw.rect(surface,couleur,position)
+
     def remove(self):
         self.jeu.groupe_detraqueurs.remove(self)
 

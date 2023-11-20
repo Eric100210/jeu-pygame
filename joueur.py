@@ -21,8 +21,10 @@ class Joueur(pg.sprite.Sprite):
         self.groupe_sortileges.add(Sortilege(self)) #on place self en argument pour avoir accès aux coordonnées du joueur au moment de lancer un sortilège
     
     def move_right(self):
+        # si pas de collision, on peut avancer
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
             self.rect.x = self.rect.x + self.vitesse 
+        #s'il y a collision, on ne peut avancer que dans la direction opposée au détraqueur
         else:
             for d in self.jeu.groupe_detraqueurs:
                 groupe=pg.sprite.Group()

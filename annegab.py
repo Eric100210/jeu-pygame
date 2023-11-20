@@ -27,6 +27,7 @@ while running:
 
     for detraqueur in jeu.groupe_detraqueurs:
         detraqueur.move()
+        detraqueur.update_health_bar(screen)
     
     #appliquer l'ensemble des images du groupe de sortilèges
     jeu.joueur.groupe_sortileges.draw(screen)
