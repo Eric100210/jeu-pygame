@@ -15,9 +15,14 @@ class Detraqueur(pg.sprite.Sprite):
         self.rect.x=900
         self.rect.y=300
 
+    def remove(self):
+        self.jeu.groupe_detraqueurs.remove(self)
+
     def move(self): #le détraqueur avance vers la gauche
         if not self.jeu.collision(self, self.jeu.groupe_joueur):
             self.rect.x-=self.vitesse
+        if self.rect.x<-200:
+            self.remove()
 
 
         

@@ -23,13 +23,42 @@ class Joueur(pg.sprite.Sprite):
     def move_right(self):
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
             self.rect.x = self.rect.x + self.vitesse 
+        else:
+            for d in self.jeu.groupe_detraqueurs:
+                groupe=pg.sprite.Group()
+                groupe.add(d)
+                if self.jeu.collision(self, groupe) and self.rect.x > d.rect.x:
+                    self.rect.x = self.rect.x + self.vitesse
+
     
     def move_left(self):
-        self.rect.x = self.rect.x - self.vitesse 
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+            self.rect.x = self.rect.x - self.vitesse 
+        else:
+            for d in self.jeu.groupe_detraqueurs:
+                groupe=pg.sprite.Group()
+                groupe.add(d)
+                if self.jeu.collision(self, groupe) and self.rect.x < d.rect.x:
+                    self.rect.x = self.rect.x - self.vitesse
 
     def move_up(self):
-        self.rect.y = self.rect.y - self.vitesse 
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+            self.rect.y = self.rect.y - self.vitesse 
+        else:
+            for d in self.jeu.groupe_detraqueurs:
+                groupe=pg.sprite.Group()
+                groupe.add(d)
+                if self.jeu.collision(self, groupe) and self.rect.y < d.rect.y:
+                    self.rect.y = self.rect.y - self.vitesse
 
     def move_down(self):
-        self.rect.y = self.rect.y + self.vitesse 
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+            self.rect.y = self.rect.y + self.vitesse 
+        else:
+            for d in self.jeu.groupe_detraqueurs:
+                groupe=pg.sprite.Group()
+                groupe.add(d)
+                if self.jeu.collision(self, groupe) and self.rect.y > d.rect.y:
+                    self.rect.y = self.rect.y + self.vitesse
+
 
