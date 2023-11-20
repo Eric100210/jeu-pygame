@@ -29,8 +29,9 @@ class Sortilege(pg.sprite.Sprite):
         self.rotate()
 
         #vérifier si le sortilège entre en collision avec un détraqueur
-        if self.joueur.jeu.collision(self, self.joueur.jeu.groupe_detraqueurs):
+        for d in self.joueur.jeu.collision(self, self.joueur.jeu.groupe_detraqueurs):
             self.remove()
+            d.damage(self.joueur.sort)
 
         if self.rect.x > 1100:
             self.remove()

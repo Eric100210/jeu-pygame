@@ -22,6 +22,8 @@ while running:
     #appliquer l'image du joueur
     screen.blit(jeu.joueur.image, jeu.joueur.rect)
 
+    jeu.joueur.update_health_bar(screen)
+
     for sort in jeu.joueur.groupe_sortileges:
         sort.move()
 
