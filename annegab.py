@@ -39,7 +39,7 @@ while running:
 
     pg.display.flip() #on met à jour
 
-    #si le joueur veut quitter le jeu
+    #récupération des touches appuyées, pour les mettre dans le dictionnaire pressed
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False

@@ -8,7 +8,7 @@ class Sortilege(pg.sprite.Sprite):
         self.joueur = joueur
         self.image = pg.image.load('projectile.png')
         self.image = pg.transform.scale(self.image, (50,50))
-        self.image = pg.transform.rotate(self.image, 290)
+        self.image = pg.transform.rotate(self.image, 290) #pour orienter l'image de départ du sortilège
         self.rect = self.image.get_rect()
         self.rect.x = joueur.rect.x + 145
         self.rect.y = joueur.rect.y + 100
