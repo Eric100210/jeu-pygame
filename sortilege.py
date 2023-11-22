@@ -1,5 +1,8 @@
 import pygame as pg
 
+#définir la classe des sortilèges
+
+
 class Sortilege(pg.sprite.Sprite):
 
     def __init__(self, joueur):
@@ -13,13 +16,13 @@ class Sortilege(pg.sprite.Sprite):
         self.rect.x = joueur.rect.x + 145
         self.rect.y = joueur.rect.y + 100
         self.origine_image = self.image
-        self.angle=0
+        self.angle = 0
 
     
     def rotate(self):
-        self.angle+=12
-        self.image=pg.transform.rotozoom(self.origine_image,self.angle,1)
-        self.rect=self.image.get_rect(center=self.rect.center) #pour que la rotation se fasse par rapport au centre du rect
+        self.angle += 12
+        self.image = pg.transform.rotozoom(self.origine_image, self.angle, 1)
+        self.rect = self.image.get_rect(center=self.rect.center) #pour que la rotation se fasse par rapport au centre du rect
         
     def remove(self):
         self.joueur.groupe_sortileges.remove(self)
@@ -33,5 +36,6 @@ class Sortilege(pg.sprite.Sprite):
             self.remove()
             d.damage(self.joueur.sort)
 
+        #on supprime le sortilège qui sort de l'écran
         if self.rect.x > 1100:
             self.remove()

@@ -8,13 +8,14 @@ from detraqueur import Detraqueur
 class Jeu:
 
     def __init__(self):
-        self.groupe_joueur=pg.sprite.Group()
+        #générer le joueur
+        self.groupe_joueur = pg.sprite.Group()
         self.joueur = Joueur(self)
+        self.pressed = {}
         self.groupe_joueur.add(self.joueur) #créer un groupe avec le joueur, pour gérer les collisions ensuite
         #groupe de détraqueurs
-        self.groupe_detraqueurs=pg.sprite.Group()
-        self.pressed = {}
-        self.spawn_detraqueur()
+        self.groupe_detraqueurs = pg.sprite.Group()
+        self.spawn_detraqueur() #génère un détraqueur dès le début du jeu
 
     #gérer les collisions : on check la collision entre un objet (sprite) et un groupe d'objets
     def collision(self, sprite, groupe):

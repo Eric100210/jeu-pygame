@@ -3,9 +3,9 @@ import random
 
 class Detraqueur(pg.sprite.Sprite):
 
-    def __init__(self, game):
+    def __init__(self, jeu):
         super().__init__()
-        self.jeu = game
+        self.jeu = jeu
         self.vie=100
         self.vie_max=100
         self.vitesse=2 + random.uniform(-0.5,1.5)
@@ -17,12 +17,12 @@ class Detraqueur(pg.sprite.Sprite):
         self.rect.y=300 + random.randint(-280,250)
 
     def damage(self, degats):
-        self.vie-=degats
-        if self.vie<=0:
+        self.vie -= degats
+        if self.vie <= 0:
             self.rect.x=900 + random.randint(0,300)
             self.rect.y=300 + random.randint(-280,250)
             self.vitesse=2 + random.uniform(-0.5,1.5)
-            self.vie=self.vie_max
+            self.vie = self.vie_max
 
     def update_health_bar(self, surface):
         pg.draw.rect(surface, (60,63,60), [self.rect.x+38, self.rect.y -20, self.vie_max, 5])
@@ -33,7 +33,7 @@ class Detraqueur(pg.sprite.Sprite):
 
     def move(self): #le détraqueur avance vers la gauche
         if not self.jeu.collision(self, self.jeu.groupe_joueur):
-            self.rect.x-=self.vitesse
+            self.rect.x -= self.vitesse
         else:
             self.jeu.joueur.damage(self.attaque)
         if self.rect.x<-200:

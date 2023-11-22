@@ -4,9 +4,9 @@ from sortilege import Sortilege
 #créer la classe des joueurs
 class Joueur(pg.sprite.Sprite):
 
-    def __init__(self, game):
+    def __init__(self, jeu):
         super().__init__()
-        self.jeu = game
+        self.jeu = jeu
         self.vie = 100
         self.vie_max = 100
         self.sort = 10
@@ -24,7 +24,6 @@ class Joueur(pg.sprite.Sprite):
         if self.vie-degats>=degats:
             self.vie -= degats
 
-
     def launch_spell(self):
         #créer un nouvel objet de la classe Sortilege
         self.groupe_sortileges.add(Sortilege(self)) #on place self en argument pour avoir accès aux coordonnées du joueur au moment de lancer un sortilège
@@ -37,7 +36,7 @@ class Joueur(pg.sprite.Sprite):
         #s'il y a collision, on ne peut avancer que dans la direction opposée au détraqueur
         else:
             for d in self.jeu.groupe_detraqueurs:
-                groupe=pg.sprite.Group()
+                groupe = pg.sprite.Group()
                 groupe.add(d)
                 if self.jeu.collision(self, groupe) and self.rect.x > d.rect.x:
                     self.rect.x = self.rect.x + self.vitesse
