@@ -28,7 +28,7 @@ class Sortilege(pg.sprite.Sprite):
         self.joueur.groupe_sortileges.remove(self)
 
     def move(self):
-        self.rect.x+=self.vitesse
+        self.rect.x += self.vitesse
         self.rotate()
 
         #vérifier si le sortilège entre en collision avec un détraqueur

@@ -4,7 +4,6 @@ from detraqueur import Detraqueur
 
 #créer la classe du jeu
 
-
 class Jeu:
 
     def __init__(self):
