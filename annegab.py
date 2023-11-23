@@ -6,7 +6,11 @@ from jeu import Jeu
 pg.display.set_caption("Kill the dementors")
 screen = pg.display.set_mode((1100,700))
 background = pg.image.load('background.png')
-
+banniere = pg.image.load('logo_harrypotter.tiff')
+bouton_play = pg.image.load('play2.png')
+bouton_play_rect = bouton_play.get_rect()
+bouton_play_rect.x = bouton_play_rect.x + 400
+bouton_play_rect.y = bouton_play_rect.y + 320
 
 #charger notre joueur et notre jeu
 jeu=Jeu()
@@ -19,32 +23,13 @@ while running:
     #appliquer l'arrière plan de notre jeu
     screen.blit(background, (0,0))
 
-    #appliquer l'image du joueur
-    screen.blit(jeu.joueur.image, jeu.joueur.rect)
-
-    jeu.joueur.update_health_bar(screen)
-
-    for sort in jeu.joueur.groupe_sortileges:
-        sort.move()
-
-    for detraqueur in jeu.groupe_detraqueurs:
-        detraqueur.move()
-        detraqueur.update_health_bar(screen)
-    
-    #appliquer l'ensemble des images du groupe de sortilèges
-    jeu.joueur.groupe_sortileges.draw(screen)
-
-    #appliquer l'ensemble des images du groupe détraqueurs
-    jeu.groupe_detraqueurs.draw(screen)
-
-    if jeu.pressed.get(pg.K_RIGHT) and jeu.joueur.rect.x + jeu.joueur.rect.width < screen.get_width():
-        jeu.joueur.move_right()
-    elif jeu.pressed.get(pg.K_LEFT) and jeu.joueur.rect.x > 0:
-        jeu.joueur.move_left()
-    elif jeu.pressed.get(pg.K_UP) and jeu.joueur.rect.y >0:
-        jeu.joueur.move_up() 
-    elif jeu.pressed.get(pg.K_DOWN) and jeu.joueur.rect.y + jeu.joueur.rect.height < screen.get_height():
-        jeu.joueur.move_down()
+    #vérifier si le jeu à commencé
+    if jeu.is_playing:
+        jeu.update(screen)
+    else:
+        screen.blit(banniere, (200, 100))
+        screen.blit(bouton_play, (400, 320))
+        
 
     pg.display.flip() #on met à jour
 
@@ -60,6 +45,9 @@ while running:
 
         elif event.type == pg.KEYUP:
             jeu.pressed[event.key] = False
-    
 
+        elif event.type == pg.MOUSEBUTTONDOWN:
+            #savoir si on a cliqué sur le bouton play
+            if bouton_play_rect.collidepoint(event.pos): #event.pos récupère la position de la souris
+                jeu.start()
             

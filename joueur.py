@@ -7,22 +7,25 @@ class Joueur(pg.sprite.Sprite):
     def __init__(self, jeu):
         super().__init__()
         self.jeu = jeu
-        self.vie = 100
-        self.vie_max = 100
+        self.health = 100
+        self.health_max = 100
         self.sort = 10
         self.vitesse = 5
-        self.groupe_sortileges=pg.sprite.Group() #groupe de sortileges pour pouvoir lancer plusieurs sorts
+        self.groupe_sortileges = pg.sprite.Group() #groupe de sortileges pour pouvoir lancer plusieurs sorts
         self.image = pg.image.load('harry2.png')
         self.rect = self.image.get_rect()
         self.rect.y = 100
 
     def update_health_bar(self, surface):
-        pg.draw.rect(surface, (60,63,60), [self.rect.x + 93, self.rect.y - 10, self.vie_max, 7])
-        pg.draw.rect(surface,(0,255,0),[self.rect.x + 93, self.rect.y - 10, self.vie, 7])
+        pg.draw.rect(surface, (60,63,60), [self.rect.x + 93, self.rect.y - 10, self.health_max, 7])
+        pg.draw.rect(surface,(0,255,0),[self.rect.x + 93, self.rect.y - 10, self.health, 7])
 
     def damage(self, degats):
-        if self.vie-degats>=degats:
-            self.vie -= degats
+        if self.health-degats >= degats:
+            self.health -= degats
+        else:
+            #si le jour n'a plus de point de vie
+            self.jeu.game_over()
 
     def launch_spell(self):
         #créer un nouvel objet de la classe Sortilege
