@@ -8,7 +8,11 @@ class Jeu:
 
     def __init__(self):
         #définir si le jeu a commencé ou non
-        self.is_playing = False
+        self.is_playing_harry = False
+        self.is_playing_hermione = False
+        self.is_playing_drago = False
+        self.choose_character = False
+        self.character=pg.image.load('hermione2.png')
         #générer le joueur
         self.groupe_joueur = pg.sprite.Group()
         self.joueur = Joueur(self)
@@ -17,18 +21,29 @@ class Jeu:
         #groupe de détraqueurs
         self.groupe_detraqueurs = pg.sprite.Group()
 
-    def start(self):
-        self.is_playing = True
+    def start_harry(self):
+        self.is_playing_harry = True
         self.spawn_detraqueur() #génère un détraqueur dès le début du jeu
+
+    def start_hermione(self):
+        self.is_playing_hermione = True
+        self.spawn_detraqueur()
+    
+    def start_drago(self):
+        self.is_playing_drago = True
+        self.spawn_detraqueur()
 
     def game_over(self):
         self.groupe_detraqueurs = pg.sprite.Group() # on écrase tous les détraqueurs en mettant un groupe vide
         self.joueur.health = self.joueur.health_max
-        self.is_playing = False
+        self.is_playing_harry = False
+        self.is_playing_hermione = False
+        self.is_playing_drago = False
 
-    def update(self, screen):
+
+    def update(self, screen, perso):
         #appliquer l'image du joueur
-        screen.blit(self.joueur.image, self.joueur.rect)
+        screen.blit(perso, self.joueur.rect)
 
         self.joueur.update_health_bar(screen)
 

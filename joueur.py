@@ -12,7 +12,7 @@ class Joueur(pg.sprite.Sprite):
         self.sort = 10
         self.vitesse = 5
         self.groupe_sortileges = pg.sprite.Group() #groupe de sortileges pour pouvoir lancer plusieurs sorts
-        self.image = pg.image.load('harry2.png')
+        self.image = jeu.character
         self.rect = self.image.get_rect()
         self.rect.y = 100
 
