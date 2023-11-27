@@ -1,6 +1,7 @@
 import pygame as pg
 from joueur import Joueur
 from detraqueur import Detraqueur
+from voldemort_event import VoldemortEvent
 
 #créer la classe du jeu
 
@@ -12,7 +13,7 @@ class Jeu:
         self.is_playing_hermione = False
         self.is_playing_drago = False
         self.choose_character = False
-        self.character=pg.image.load('hermione2.png')
+        self.character = pg.image.load('harry2.png')
         #générer le joueur
         self.groupe_joueur = pg.sprite.Group()
         self.joueur = Joueur(self)
@@ -20,17 +21,21 @@ class Jeu:
         self.groupe_joueur.add(self.joueur) #créer un groupe avec le joueur, pour gérer les collisions ensuite
         #groupe de détraqueurs
         self.groupe_detraqueurs = pg.sprite.Group()
+        self.voldemort_event =VoldemortEvent(self)
 
     def start_harry(self):
         self.is_playing_harry = True
+        self.spawn_detraqueur()
         self.spawn_detraqueur() #génère un détraqueur dès le début du jeu
 
     def start_hermione(self):
         self.is_playing_hermione = True
         self.spawn_detraqueur()
+        self.spawn_detraqueur()
     
     def start_drago(self):
         self.is_playing_drago = True
+        self.spawn_detraqueur()
         self.spawn_detraqueur()
 
     def game_over(self):
@@ -47,18 +52,27 @@ class Jeu:
 
         self.joueur.update_health_bar(screen)
 
+        self.voldemort_event.update_bar(screen)
+
         for sort in self.joueur.groupe_sortileges:
             sort.move()
 
         for detraqueur in self.groupe_detraqueurs:
             detraqueur.move()
             detraqueur.update_health_bar(screen)
+        
+        for voldemort in self.voldemort_event.groupe_voldemort:
+            voldemort.move()
     
+
         #appliquer l'ensemble des images du groupe de sortilèges
         self.joueur.groupe_sortileges.draw(screen)
 
         #appliquer l'ensemble des images du groupe détraqueurs
         self.groupe_detraqueurs.draw(screen)
+
+        #appliquer l'image de Voldemort
+        self.voldemort_event.groupe_voldemort.draw(screen)
 
         if self.pressed.get(pg.K_RIGHT) and self.joueur.rect.x + self.joueur.rect.width < screen.get_width():
             self.joueur.move_right()

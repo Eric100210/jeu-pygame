@@ -24,7 +24,7 @@ class Joueur(pg.sprite.Sprite):
         if self.health-degats >= degats:
             self.health -= degats
         else:
-            #si le jour n'a plus de point de vie
+            #si le joueur n'a plus de point de vie
             self.jeu.game_over()
 
     def launch_spell(self):
