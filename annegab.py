@@ -70,7 +70,9 @@ while running:
         elif event.type == pg.KEYDOWN:
             jeu.pressed[event.key] = True
             if event.key == pg.K_SPACE:
-                jeu.joueur.launch_spell()
+                if jeu.is_playing_drago or jeu.is_playing_harry or jeu.is_playing_hermione:
+                    jeu.joueur.launch_spell()
+                     
 
         elif event.type == pg.KEYUP:
             jeu.pressed[event.key] = False
@@ -81,17 +83,21 @@ while running:
                 #jeu.start()
             if bouton_character_rect.collidepoint(event.pos):
                 jeu.choose_character = True
+                jeu.son.play('click')
             if harry_rect.collidepoint(event.pos):
                     jeu.choose_character = False
                     jeu.start_harry()
+                    jeu.son.play('click')
             elif hermione_rect.collidepoint(event.pos):
                     jeu.choose_character = False
                     jeu.character = pg.image.load('hermione2.png')
                     jeu.start_hermione()
+                    jeu.son.play('click')
             elif drago_rect.collidepoint(event.pos):
                     jeu.choose_character = False
                     jeu.character = pg.image.load('drago2.png')
                     jeu.start_drago()
+                    jeu.son.play('click')
                        
 
 

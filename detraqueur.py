@@ -23,6 +23,7 @@ class Detraqueur(pg.sprite.Sprite):
             self.rect.y = 300 + random.randint(-280,250)
             self.vitesse = 2 + random.uniform(-0.5,1.5)
             self.vie = self.vie_max
+            self.jeu.score += 20
 
     def update_health_bar(self, surface):
         pg.draw.rect(surface, (60,63,60), [self.rect.x+38, self.rect.y -20, self.vie_max, 5])
@@ -32,12 +33,21 @@ class Detraqueur(pg.sprite.Sprite):
         self.jeu.groupe_detraqueurs.remove(self)
 
     def move(self): #le détraqueur avance vers la gauche
-        if not self.jeu.collision(self, self.jeu.groupe_joueur):
-            self.rect.x -= self.vitesse
+        if self.rect.x > -200:
+            if not self.jeu.collision(self, self.jeu.groupe_joueur):
+                self.rect.x -= self.vitesse
+            else:
+                self.jeu.joueur.damage(self.attaque)
+
         else:
-            self.jeu.joueur.damage(self.attaque)
-        if self.rect.x <- 200:
-            self.remove()
+            self.rect.x = 900 + random.randint(0,300)
+            self.rect.y = 300 + random.randint(-280,250)
+            self.vitesse = 2 + random.uniform(-0.5,1.5)
+            self.vie = self.vie_max
+
+        #if self.rect.x <- 200:
+            #self.remove()
+
 
 
         

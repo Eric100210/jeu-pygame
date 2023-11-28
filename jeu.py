@@ -2,6 +2,8 @@ import pygame as pg
 from joueur import Joueur
 from detraqueur import Detraqueur
 from voldemort_event import VoldemortEvent
+from son import Son
+
 
 #créer la classe du jeu
 
@@ -22,6 +24,11 @@ class Jeu:
         #groupe de détraqueurs
         self.groupe_detraqueurs = pg.sprite.Group()
         self.voldemort_event =VoldemortEvent(self)
+        #score
+        self.score = 0
+        self.font = pg.font.SysFont("monospace", 25) # on crée la police
+        #on met du son
+        self.son = Son()
 
     def start_harry(self):
         self.is_playing_harry = True
@@ -40,13 +47,21 @@ class Jeu:
 
     def game_over(self):
         self.groupe_detraqueurs = pg.sprite.Group() # on écrase tous les détraqueurs en mettant un groupe vide
+        self.voldemort_event.groupe_voldemort = pg.sprite.Group()
         self.joueur.health = self.joueur.health_max
         self.is_playing_harry = False
         self.is_playing_hermione = False
         self.is_playing_drago = False
+        self.score = 0
+        self.son.play('game_over')
 
 
     def update(self, screen, perso):
+
+        #afficher le score
+        score_text = self.font.render(f"Score : {self.score}", 1, (0,0,0))
+        screen.blit(score_text, (20,20))
+
         #appliquer l'image du joueur
         screen.blit(perso, self.joueur.rect)
 

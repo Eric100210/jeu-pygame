@@ -7,7 +7,7 @@ class Voldemort(pg.sprite.Sprite):
         super().__init__()
         self.image = pg.image.load("Voldemort.png")
         self.rect = self.image.get_rect()
-        self.vitesse = 5
+        self.vitesse = 3
         self.attaque = 1
         self.rect.x = 900 + random.randint(0,300)
         self.rect.y = 300 + random.randint(-280,250)

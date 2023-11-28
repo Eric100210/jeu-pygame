@@ -30,6 +30,7 @@ class Joueur(pg.sprite.Sprite):
     def launch_spell(self):
         #créer un nouvel objet de la classe Sortilege
         self.groupe_sortileges.add(Sortilege(self)) #on place self en argument pour avoir accès aux coordonnées du joueur au moment de lancer un sortilège
+        self.jeu.son.play('tir')
     
 
     def move_right(self):
