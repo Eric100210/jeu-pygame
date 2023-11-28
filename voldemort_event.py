@@ -7,7 +7,7 @@ class VoldemortEvent:
     def __init__(self, jeu):
         self.jeu = jeu
         self.percent = 0
-        self.percent_speed = 40
+        self.percent_speed = 5
         self.groupe_voldemort = pg.sprite.Group()
 
     def add_percent(self):

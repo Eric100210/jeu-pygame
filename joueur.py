@@ -34,7 +34,7 @@ class Joueur(pg.sprite.Sprite):
 
     def move_right(self):
         # si pas de collision, on peut avancer
-        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x + self.vitesse 
         #s'il y a collision, on ne peut avancer que dans la direction opposée au détraqueur
         else:
@@ -46,7 +46,7 @@ class Joueur(pg.sprite.Sprite):
 
     
     def move_left(self):
-        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x - self.vitesse 
         else:
             for d in self.jeu.groupe_detraqueurs:
@@ -56,17 +56,17 @@ class Joueur(pg.sprite.Sprite):
                     self.rect.x = self.rect.x - self.vitesse
 
     def move_up(self):
-        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y - self.vitesse 
         else:
             for d in self.jeu.groupe_detraqueurs:
-                groupe=pg.sprite.Group()
+                groupe = pg.sprite.Group()
                 groupe.add(d)
                 if self.jeu.collision(self, groupe) and self.rect.y < d.rect.y:
                     self.rect.y = self.rect.y - self.vitesse
 
     def move_down(self):
-        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs):
+        if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y + self.vitesse 
         else:
             for d in self.jeu.groupe_detraqueurs:

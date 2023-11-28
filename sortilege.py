@@ -35,6 +35,11 @@ class Sortilege(pg.sprite.Sprite):
         for d in self.joueur.jeu.collision(self, self.joueur.jeu.groupe_detraqueurs):
             self.remove()
             d.damage(self.joueur.sort)
+        
+        #vérifier si le sortilège entre en collision avec un Voldemort
+        for v in self.joueur.jeu.collision(self, self.joueur.jeu.voldemort_event.groupe_voldemort):
+            self.remove()
+            v.damage(self.joueur.sort)
 
         #on supprime le sortilège qui sort de l'écran
         if self.rect.x > 1100:

@@ -63,6 +63,7 @@ class Jeu:
         
         for voldemort in self.voldemort_event.groupe_voldemort:
             voldemort.move()
+            voldemort.update_health_bar(screen)
     
 
         #appliquer l'ensemble des images du groupe de sortilèges

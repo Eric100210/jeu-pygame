@@ -36,7 +36,7 @@ class Detraqueur(pg.sprite.Sprite):
             self.rect.x -= self.vitesse
         else:
             self.jeu.joueur.damage(self.attaque)
-        if self.rect.x<-200:
+        if self.rect.x <- 200:
             self.remove()
 
 
