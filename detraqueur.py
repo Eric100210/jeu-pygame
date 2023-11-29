@@ -38,6 +38,7 @@ class Detraqueur(pg.sprite.Sprite):
             self.jeu.joueur.damage(self.attaque)
         if self.rect.x <- 200:
             self.remove()
+            self.jeu.spawn_detraqueur()
 
 
         
