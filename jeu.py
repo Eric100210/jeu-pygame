@@ -51,6 +51,7 @@ class Jeu:
         self.groupe_detraqueurs = pg.sprite.Group() # on écrase tous les détraqueurs en mettant un groupe vide
         self.voldemort_event.groupe_voldemort = pg.sprite.Group() 
         self.joueur.groupe_sortileges = pg.sprite.Group()
+        self.voldemort_event.first = True
         self.joueur.health = self.joueur.health_max
         self.is_playing_harry = False
         self.is_playing_hermione = False
@@ -64,6 +65,7 @@ class Jeu:
         self.groupe_detraqueurs = pg.sprite.Group() 
         self.voldemort_event.groupe_voldemort = pg.sprite.Group() 
         self.joueur.groupe_sortileges = pg.sprite.Group()
+        self.voldemort_event.first = True
         self.joueur.health = self.joueur.health_max
         self.is_playing_harry = False
         self.is_playing_hermione = False
