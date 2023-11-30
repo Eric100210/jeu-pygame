@@ -28,6 +28,6 @@ class Voldemort(pg.sprite.Sprite):
     def damage(self, degats):
         self.vie -= degats
         if self.vie <= 0:
-            self.voldemort_event.jeu.game_over()
+            self.voldemort_event.jeu.victory()
 
 

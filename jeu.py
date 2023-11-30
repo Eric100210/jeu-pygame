@@ -15,6 +15,8 @@ class Jeu:
         self.is_playing_hermione = False
         self.is_playing_drago = False
         self.choose_character = False
+        self.defaite = False
+        self.victoire = False
         self.character = pg.image.load('harry2.png')
         #générer le joueur
         self.groupe_joueur = pg.sprite.Group()
@@ -56,6 +58,21 @@ class Jeu:
         self.score = 0
         self.voldemort_event.percent = 0
         self.son.play('game_over')
+        self.defaite = True
+
+    def victory(self):
+        self.groupe_detraqueurs = pg.sprite.Group() 
+        self.voldemort_event.groupe_voldemort = pg.sprite.Group() 
+        self.joueur.groupe_sortileges = pg.sprite.Group()
+        self.joueur.health = self.joueur.health_max
+        self.is_playing_harry = False
+        self.is_playing_hermione = False
+        self.is_playing_drago = False
+        self.score = 0
+        self.voldemort_event.percent = 0
+        #self.son.play('victoire')
+        self.victoire = True
+
 
 
     def update(self, screen, perso):

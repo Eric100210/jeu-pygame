@@ -6,6 +6,8 @@ from jeu import Jeu
 pg.display.set_caption("Kill the dementors")
 screen = pg.display.set_mode((1100,700))
 background = pg.image.load('background.png')
+
+#générer les graphiques à ajouter par-dessus la fenêtre
 banniere = pg.image.load('logo_harrypotter.tiff')
 #bouton_play = pg.image.load('play2.png')
 #bouton_play_rect = bouton_play.get_rect()
@@ -29,6 +31,9 @@ drago = pg.image.load('drago2.png')
 drago_rect = drago.get_rect()
 drago_rect.x = drago_rect.x + 720
 drago_rect.y = drago_rect.y + 200
+
+victoire = pg.image.load('victory.png')
+defaite = pg.image.load('defeat.png')
 
 
 #charger notre joueur et notre jeu
@@ -54,6 +59,12 @@ while running:
         screen.blit(harry, harry_rect)
         screen.blit(hermione, hermione_rect)
         screen.blit(drago, drago_rect)
+    elif jeu.defaite:
+        screen.blit(defaite, (290,0))
+        screen.blit(bouton_character, bouton_character_rect)
+    elif jeu.victoire:
+        screen.blit(victoire, (290,0))
+        screen.blit(bouton_character, bouton_character_rect)
     else:
         screen.blit(banniere, (200, 100))
         #screen.blit(bouton_play, bouton_play_rect)
