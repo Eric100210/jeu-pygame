@@ -2,6 +2,8 @@ import pygame as pg
 from voldemort import Voldemort 
 
 class VoldemortEvent:
+    #on veut savoir si c'est le premier passage de Voldemort ou non
+    first=True
 
     #on crée un compteur
     def __init__(self, jeu):
@@ -17,9 +19,14 @@ class VoldemortEvent:
         return self.percent >= 100
     
     def vol_is_coming(self):
-        if self.is_full_loaded():
+        if self.is_full_loaded() and self.first:
             self.percent = 0
-            self.groupe_voldemort.add(Voldemort(self))
+            self.groupe_voldemort.add(Voldemort(self, 300))
+            self.first = False
+        if self.is_full_loaded() and not self.first:
+            self.percent = 0
+            self.groupe_voldemort = pg.sprite.Group()
+            self.groupe_voldemort.add(Voldemort(self, self.groupe_voldemort.sprites()[0].vie))
 
 
     def update_bar(self, surface):
