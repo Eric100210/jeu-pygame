@@ -81,23 +81,25 @@ while running:
             #savoir si on a cliqué sur le bouton play
             #if bouton_play_rect.collidepoint(event.pos): #event.pos récupère la position de la souris
                 #jeu.start()
-            if bouton_character_rect.collidepoint(event.pos):
-                jeu.choose_character = True
-                jeu.son.play('click')
-            if harry_rect.collidepoint(event.pos):
-                    jeu.choose_character = False
-                    jeu.start_harry()
+            if not (jeu.is_playing_drago or jeu.is_playing_harry or jeu.is_playing_hermione):
+                if bouton_character_rect.collidepoint(event.pos):
+                    jeu.choose_character = True
                     jeu.son.play('click')
-            elif hermione_rect.collidepoint(event.pos):
-                    jeu.choose_character = False
-                    jeu.character = pg.image.load('hermione2.png')
-                    jeu.start_hermione()
-                    jeu.son.play('click')
-            elif drago_rect.collidepoint(event.pos):
-                    jeu.choose_character = False
-                    jeu.character = pg.image.load('drago2.png')
-                    jeu.start_drago()
-                    jeu.son.play('click')
+                if jeu.choose_character :
+                    if harry_rect.collidepoint(event.pos):
+                        jeu.choose_character = False
+                        jeu.start_harry()
+                        jeu.son.play('click')
+                    elif hermione_rect.collidepoint(event.pos):
+                        jeu.choose_character = False
+                        jeu.character = pg.image.load('hermione2.png')
+                        jeu.start_hermione()
+                        jeu.son.play('click')
+                    elif drago_rect.collidepoint(event.pos):
+                        jeu.choose_character = False
+                        jeu.character = pg.image.load('drago2.png')
+                        jeu.start_drago()
+                        jeu.son.play('click')
                        
 
 
