@@ -25,8 +25,9 @@ class VoldemortEvent:
             self.first = False
         if self.is_full_loaded() and not self.first:
             self.percent = 0
+            life = self.groupe_voldemort.sprites()[0].vie
             self.groupe_voldemort = pg.sprite.Group()
-            self.groupe_voldemort.add(Voldemort(self, self.groupe_voldemort.sprites()[0].vie))
+            self.groupe_voldemort.add(Voldemort(self, life))
 
 
     def update_bar(self, surface):
