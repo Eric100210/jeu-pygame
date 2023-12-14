@@ -9,10 +9,6 @@ background = pg.image.load('background.png')
 
 #générer les graphiques à ajouter par-dessus la fenêtre
 banniere = pg.image.load('logo_harrypotter.tiff')
-#bouton_play = pg.image.load('play2.png')
-#bouton_play_rect = bouton_play.get_rect()
-#bouton_play_rect.x = bouton_play_rect.x + 400
-#bouton_play_rect.y = bouton_play_rect.y + 320
 bouton_character = pg.image.load('choose_character.png')
 bouton_character = pg.transform.scale(bouton_character,(425,205))
 bouton_character_rect = bouton_character.get_rect()
@@ -22,15 +18,15 @@ bouton_character_rect.y = bouton_character_rect.y + 325
 harry = pg.image.load('harry2.png')
 harry_rect = harry.get_rect()
 harry_rect.x = harry_rect.x+100
-harry_rect.y = harry_rect.y+200
+harry_rect.y = harry_rect.y+100
 hermione = pg.image.load('hermione2.png')
 hermione_rect = hermione.get_rect()
 hermione_rect.x = hermione_rect.x+410
-hermione_rect.y = hermione_rect.y+200
+hermione_rect.y = hermione_rect.y+100
 drago = pg.image.load('drago2.png')
 drago_rect = drago.get_rect()
 drago_rect.x = drago_rect.x + 720
-drago_rect.y = drago_rect.y + 200
+drago_rect.y = drago_rect.y + 100
 
 victoire = pg.image.load('victory.png')
 defaite = pg.image.load('defeat.png')

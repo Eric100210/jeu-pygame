@@ -28,7 +28,7 @@ class Jeu:
         self.voldemort_event =VoldemortEvent(self)
         #score
         self.score = 0
-        self.font = pg.font.SysFont("monospace", 25) # on crée la police
+        self.font = pg.font.SysFont("Comic sans MS", 35) # on crée la police
         #on met du son
         self.son = Son()
 
@@ -85,7 +85,7 @@ class Jeu:
     def update(self, screen, perso):
         """boucle du jeu qu'on exécute à chaque instant"""
         #afficher le score
-        score_text = self.font.render(f"Score : {self.score}", 1, (0,0,0))
+        score_text = self.font.render(f"Score : {self.score}", 1, (255,255,255))
         screen.blit(score_text, (20,20))
 
         #appliquer l'image du joueur
