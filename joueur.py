@@ -17,23 +17,25 @@ class Joueur(pg.sprite.Sprite):
         self.rect.y = 100
 
     def update_health_bar(self, surface):
+        """gère la barre de vie du joueur"""
         pg.draw.rect(surface, (60,63,60), [self.rect.x + 93, self.rect.y - 10, self.health_max, 7])
         pg.draw.rect(surface,(0,255,0),[self.rect.x + 93, self.rect.y - 10, self.health, 7])
 
     def damage(self, degats):
+        """gère l'encaissement de dégâts de notre joueur, et sa mort le cas échéant"""
         if self.health-degats >= degats:
             self.health -= degats
         else:
-            #si le joueur n'a plus de point de vie
             self.jeu.game_over()
 
     def launch_spell(self):
-        #créer un nouvel objet de la classe Sortilege
+        """créer un nouvel objet de la classe Sortilege"""
         self.groupe_sortileges.add(Sortilege(self)) #on place self en argument pour avoir accès aux coordonnées du joueur au moment de lancer un sortilège
         self.jeu.son.play('tir')
     
 
     def move_right(self):
+        """gère le déplacement vers la droite, selon s'il y a des collisions ou non"""
         # si pas de collision, on peut avancer
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x + self.vitesse 
@@ -50,6 +52,7 @@ class Joueur(pg.sprite.Sprite):
 
     
     def move_left(self):
+        """gère le déplacement vers la gauche, selon s'il y a des collisions ou non"""
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x - self.vitesse 
         else:
@@ -63,6 +66,7 @@ class Joueur(pg.sprite.Sprite):
                         self.rect.x = self.rect.x - self.vitesse
 
     def move_up(self):
+        """gère le déplacement vers le haut, selon s'il y a des collisions ou non"""
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y - self.vitesse 
         else:
@@ -76,6 +80,7 @@ class Joueur(pg.sprite.Sprite):
                         self.rect.y = self.rect.y - self.vitesse
 
     def move_down(self):
+        """gère le déplacement vers le bas, selon s'il y a des collisions ou non"""
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y + self.vitesse 
         else:

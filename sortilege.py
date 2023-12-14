@@ -20,14 +20,17 @@ class Sortilege(pg.sprite.Sprite):
 
     
     def rotate(self):
+        """gère la rotation du sortilège lorsqu'il se déplace"""
         self.angle += 12
         self.image = pg.transform.rotozoom(self.origine_image, self.angle, 1)
         self.rect = self.image.get_rect(center=self.rect.center) #pour que la rotation se fasse par rapport au centre du rect
         
     def remove(self):
+        """gère la suppression du sortilège"""
         self.joueur.groupe_sortileges.remove(self)
 
     def move(self):
+        """gère le déplacement vers la droite du sortilege et les cas de suppression"""
         self.rect.x += self.vitesse
         self.rotate()
 

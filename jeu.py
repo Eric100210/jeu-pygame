@@ -33,21 +33,25 @@ class Jeu:
         self.son = Son()
 
     def start_harry(self):
+        """démarre le jeu avec Harry, et fait apparaître directement 2 détraqueurs"""
         self.is_playing_harry = True
         self.spawn_detraqueur()
-        self.spawn_detraqueur() #génère un détraqueur dès le début du jeu
+        self.spawn_detraqueur() 
 
     def start_hermione(self):
+        """démarre le jeu avec Hermione, et fait apparaître directement 2 détraqueurs"""
         self.is_playing_hermione = True
         self.spawn_detraqueur()
         self.spawn_detraqueur()
     
     def start_drago(self):
+        """démarre le jeu avec Drago, et fait apparaître directement 2 détraqueurs"""
         self.is_playing_drago = True
         self.spawn_detraqueur()
         self.spawn_detraqueur()
 
     def game_over(self):
+        """gère l'apparition de la fenêtre de game over et la disparition des éléments du jeu"""
         self.groupe_detraqueurs = pg.sprite.Group() # on écrase tous les détraqueurs en mettant un groupe vide
         self.voldemort_event.groupe_voldemort = pg.sprite.Group() 
         self.joueur.groupe_sortileges = pg.sprite.Group()
@@ -62,6 +66,7 @@ class Jeu:
         self.defaite = True
 
     def victory(self):
+        """gère l'apparition de la fenêtre de victoire et la disparition des éléments du jeu"""
         self.groupe_detraqueurs = pg.sprite.Group() 
         self.voldemort_event.groupe_voldemort = pg.sprite.Group() 
         self.joueur.groupe_sortileges = pg.sprite.Group()
@@ -78,7 +83,7 @@ class Jeu:
 
 
     def update(self, screen, perso):
-
+        """boucle du jeu qu'on exécute à chaque instant"""
         #afficher le score
         score_text = self.font.render(f"Score : {self.score}", 1, (0,0,0))
         screen.blit(score_text, (20,20))
@@ -121,10 +126,12 @@ class Jeu:
             self.joueur.move_down()
 
 
-    #gérer les collisions : on check la collision entre un objet (sprite) et un groupe d'objets
+    
     def collision(self, sprite, groupe):
+        """renvoie True s'il y a collision entre un sprite et un groupe de sprites"""
         return pg.sprite.spritecollide(sprite, groupe, False, pg.sprite.collide_mask)
 
     def spawn_detraqueur(self):
+        """provoque l'apparition d'un détraqueur sur la fenêtre"""
         detraqueur = Detraqueur(self)
         self.groupe_detraqueurs.add(detraqueur)

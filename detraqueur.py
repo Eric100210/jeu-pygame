@@ -17,6 +17,7 @@ class Detraqueur(pg.sprite.Sprite):
         self.rect.y = 300 + random.randint(-280,250)
 
     def damage(self, degats):
+        """gère les dégâts encaissés par les détraqueurs et leur réapparition s'ils meurent"""
         self.vie -= degats
         if self.vie <= 0:
             self.rect.x = 900 + random.randint(0,300)
@@ -26,13 +27,16 @@ class Detraqueur(pg.sprite.Sprite):
             self.jeu.score += 20
 
     def update_health_bar(self, surface):
+        """gère la barre de vie des détraqueurs"""
         pg.draw.rect(surface, (60,63,60), [self.rect.x+38, self.rect.y -20, self.vie_max, 5])
         pg.draw.rect(surface,(255,0,0),[self.rect.x + 38,self.rect.y - 20,self.vie,5])
 
     def remove(self):
+        """suppression du détraqueur"""
         self.jeu.groupe_detraqueurs.remove(self)
 
-    def move(self): #le détraqueur avance vers la gauche
+    def move(self): 
+        """gère le déplacement du détraqueur et son respawn s'il disparaît de l'écran"""
         if self.rect.x > -200:
             if not self.jeu.collision(self, self.jeu.groupe_joueur):
                 self.rect.x -= self.vitesse
@@ -45,8 +49,7 @@ class Detraqueur(pg.sprite.Sprite):
             self.vitesse = 2 + random.uniform(-0.5,1.5)
             self.vie = self.vie_max
 
-        #if self.rect.x <- 200:
-            #self.remove()
+        
 
 
 

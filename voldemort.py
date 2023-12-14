@@ -16,16 +16,19 @@ class Voldemort(pg.sprite.Sprite):
         self.voldemort_event = voldemort_event
 
     def move(self):
+        """Voldemort bouge vers la gauche tant qu'il n'y a pas de collision"""
         if not self.voldemort_event.jeu.collision(self, self.voldemort_event.jeu.groupe_joueur):
             self.rect.x -= self.vitesse
         else:
             self.voldemort_event.jeu.joueur.damage(self.attaque)
 
     def update_health_bar(self, surface):
+        """gère l'affichage de la barre de vie de Voldemort"""
         pg.draw.rect(surface, (60,63,60), [self.rect.x + 35, self.rect.y -20, self.vie_max/2, 5])
         pg.draw.rect(surface,(255,0,0),[self.rect.x + 35,self.rect.y - 20, self.vie/2, 5])
 
     def damage(self, degats):
+        """gère la diminution de vie de Voldemort quand il prend des dégâts"""
         self.vie -= degats
         if self.vie <= 0:
             self.voldemort_event.jeu.victory()
