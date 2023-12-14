@@ -55,6 +55,13 @@ while running:
         screen.blit(harry, harry_rect)
         screen.blit(hermione, hermione_rect)
         screen.blit(drago, drago_rect)
+        txt = pg.font.SysFont("Comic sans MS", 40)
+        harry_txt = txt.render(f"Harry", 1, (255,255,255))
+        screen.blit(harry_txt, (150,300))
+        hermione_txt = txt.render(f"Hermione", 1, (255,255,255))
+        screen.blit(hermione_txt, (450,300))
+        drago_txt = txt.render(f"Drago", 1, (255,255,255))
+        screen.blit(drago_txt, (800,300))
     elif jeu.defaite:
         screen.blit(defaite, (290,0))
         screen.blit(bouton_character, bouton_character_rect)

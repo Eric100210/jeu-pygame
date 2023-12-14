@@ -77,7 +77,6 @@ class Jeu:
         self.is_playing_drago = False
         self.score = 0
         self.voldemort_event.percent = 0
-        #self.son.play('victoire')
         self.victoire = True
 
 
