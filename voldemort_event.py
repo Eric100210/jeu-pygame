@@ -5,7 +5,6 @@ class VoldemortEvent:
     #on veut savoir si c'est le premier passage de Voldemort ou non
     first=True
 
-    #on crée un compteur
     def __init__(self, jeu):
         self.jeu = jeu
         self.percent = 0
