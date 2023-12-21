@@ -36,13 +36,13 @@ class VoldemortEvent:
 
 
     def update_bar(self, surface):
-        """gère l'avancée de la barre d'attente de Voldemort en bas de l'écran"""
+        """gère l'avancée de la barre d'attente de Voldemort en bas de l'écran, et gestion de l'aléatoire du bonus de vie"""
         self.add_percent()
 
         self.vol_is_coming()
 
         rand = randint(0,1000)
-        if rand ==1 :
+        if rand ==1 : #probabilité de 1/1000 qu'il tombe un bonus de vie à chaque micro-instant
             self.groupe_bonus.add(Bonus(self.jeu))
         
         for i in self.groupe_bonus:
