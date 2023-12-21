@@ -115,6 +115,9 @@ class Jeu:
         #appliquer l'image de Voldemort
         self.voldemort_event.groupe_voldemort.draw(screen)
 
+        #appliquer l'image des bonus
+        self.voldemort_event.groupe_bonus.draw(screen)
+
         if self.pressed.get(pg.K_RIGHT) and self.joueur.rect.x + self.joueur.rect.width < screen.get_width():
             self.joueur.move_right()
         elif self.pressed.get(pg.K_LEFT) and self.joueur.rect.x > 0:

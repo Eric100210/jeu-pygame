@@ -43,7 +43,6 @@ while running:
 
     #appliquer l'arrière plan de notre jeu
     screen.blit(background, (0,0))
-
     #vérifier si le jeu à commencé
     if jeu.is_playing_harry:
         jeu.update(screen, harry)

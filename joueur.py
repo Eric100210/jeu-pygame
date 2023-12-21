@@ -36,6 +36,7 @@ class Joueur(pg.sprite.Sprite):
 
     def move_right(self):
         """gère le déplacement vers la droite, selon s'il y a des collisions ou non"""
+        self.collision_bonus()
         # si pas de collision, on peut avancer
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x + self.vitesse 
@@ -53,6 +54,7 @@ class Joueur(pg.sprite.Sprite):
     
     def move_left(self):
         """gère le déplacement vers la gauche, selon s'il y a des collisions ou non"""
+        self.collision_bonus()
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.x = self.rect.x - self.vitesse 
         else:
@@ -67,6 +69,7 @@ class Joueur(pg.sprite.Sprite):
 
     def move_up(self):
         """gère le déplacement vers le haut, selon s'il y a des collisions ou non"""
+        self.collision_bonus()
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y - self.vitesse 
         else:
@@ -81,6 +84,7 @@ class Joueur(pg.sprite.Sprite):
 
     def move_down(self):
         """gère le déplacement vers le bas, selon s'il y a des collisions ou non"""
+        self.collision_bonus()
         if not self.jeu.collision(self, self.jeu.groupe_detraqueurs) and not self.jeu.collision(self, self.jeu.voldemort_event.groupe_voldemort):
             self.rect.y = self.rect.y + self.vitesse 
         else:
@@ -93,4 +97,7 @@ class Joueur(pg.sprite.Sprite):
                     if self.jeu.collision(self, groupe) and self.rect.y > d.rect.y:
                         self.rect.y = self.rect.y + self.vitesse
 
+    def collision_bonus(self):
+        if self.jeu.collision(self, self.jeu.voldemort_event.groupe_bonus):
+            self.jeu.voldemort_event.groupe_bonus.sprites()[0].collision()
 

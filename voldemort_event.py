@@ -1,5 +1,7 @@
 import pygame as pg
 from voldemort import Voldemort 
+from random import randint
+from bonus import Bonus
 
 class VoldemortEvent:
     #on veut savoir si c'est le premier passage de Voldemort ou non
@@ -10,6 +12,7 @@ class VoldemortEvent:
         self.percent = 0
         self.percent_speed = 5
         self.groupe_voldemort = pg.sprite.Group()
+        self.groupe_bonus = pg.sprite.Group()
 
     def add_percent(self):
         """Faire avancer le temps d'attente de Voldemort"""
@@ -37,6 +40,13 @@ class VoldemortEvent:
         self.add_percent()
 
         self.vol_is_coming()
+
+        rand = randint(0,1000)
+        if rand ==1 :
+            self.groupe_bonus.add(Bonus(self.jeu))
+        
+        for i in self.groupe_bonus:
+            i.move()
 
         pg.draw.rect(surface, (0,0,0), [0, surface.get_height()-20, surface.get_width(), 10])
         pg.draw.rect(surface, (187,11,11), [0, surface.get_height()-20, (surface.get_width()/100)*self.percent, 10])
