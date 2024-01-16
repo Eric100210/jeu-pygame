@@ -4,7 +4,7 @@ class Sortilege(pg.sprite.Sprite):
 
     def __init__(self, joueur):
         super().__init__()
-        self.vitesse = 5
+        self.vitesse = 6
         self.joueur = joueur
         self.image = pg.image.load('projectile.png')
         self.image = pg.transform.scale(self.image, (50,50))
