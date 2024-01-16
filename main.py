@@ -69,7 +69,6 @@ while running:
         screen.blit(bouton_character, bouton_character_rect)
     else:
         screen.blit(banniere, (200, 100))
-        #screen.blit(bouton_play, bouton_play_rect)
         screen.blit(bouton_character, bouton_character_rect)
         
 
@@ -91,9 +90,7 @@ while running:
             jeu.pressed[event.key] = False
 
         elif event.type == pg.MOUSEBUTTONDOWN:
-            #savoir si on a cliqué sur le bouton play
-            #if bouton_play_rect.collidepoint(event.pos): #event.pos récupère la position de la souris
-                #jeu.start()
+            
             if not (jeu.is_playing_drago or jeu.is_playing_harry or jeu.is_playing_hermione):
                 if bouton_character_rect.collidepoint(event.pos):
                     jeu.choose_character = True
