@@ -42,7 +42,7 @@ class VoldemortEvent:
         self.vol_is_coming()
 
         rand = randint(0,1000)
-        if rand ==1 : #probabilité de 1/1000 qu'il tombe un bonus de vie à chaque micro-instant
+        if rand == 1: #probabilité de 1/1000 qu'il tombe un bonus de vie à chaque micro-instant
             self.groupe_bonus.add(Bonus(self.jeu))
         
         for i in self.groupe_bonus:

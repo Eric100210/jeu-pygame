@@ -15,6 +15,7 @@ class Bonus(pg.sprite.Sprite):
         self.jeu = jeu
 
     def collision(self):
+        """gère les effets de la collision du joueur avec le bonus de vie"""
         if self.jeu.joueur.health <= 50:
             self.jeu.joueur.health += 50
         else:
@@ -22,9 +23,11 @@ class Bonus(pg.sprite.Sprite):
         self.remove()
 
     def move(self):
+        """gère le déplacement du bonus vers le bas, et sa suppression quand il disparaît de l'écran"""
         self.rect.y += self.vitesse
         if self.rect.y >= 800:
             self.remove()
 
     def remove(self):
+        """suppression du bonus"""
         self.kill()

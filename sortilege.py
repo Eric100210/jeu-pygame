@@ -1,8 +1,5 @@
 import pygame as pg
 
-#définir la classe des sortilèges
-
-
 class Sortilege(pg.sprite.Sprite):
 
     def __init__(self, joueur):
