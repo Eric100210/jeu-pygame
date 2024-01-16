@@ -18,3 +18,9 @@ Difficultés rencontrées :
     - on a appris à utiliser les sprite.Group pour utiliser la fonction collision des sprites
     - s'arranger pour que notre joueur ne puisse plus bouger vers la droite s'il y a un ennemi à sa droite, ne puisse plus monter s'il y a un ennemi au-dessus...
 - gestion de l'aléatoire pour l'apparition des bonus
+
+
+Ce que l'on a appris : 
+- l'utilité incroyable des classes pour gérer des entités
+- organiser un projet en le décomposant en plusieurs fichiers et en faisant des imports
+- lire avec précision une documentation python (ici celle de pygame)
